@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install deps
+        run: pip install -r requirements.txt
+      - name: Run demo harness
+        run: python scripts/demo.py --config config/example.yaml
+      - name: Run evaluation (simulate)
+        run: python scripts/evaluate.py --config config/suite.yaml --simulate
+      - name: Generate suite (sanity check)
+        run: python scripts/generate_cases.py --out config/suite.generated.yaml
+      - name: Render report (sanity check)
+        run: |
+          python scripts/evaluate.py --config config/suite.yaml --simulate --out reports
+          cp reports/*.json reports/latest.json
+          python scripts/render_report.py --input reports/latest.json --output reports/latest.html
+      - name: Redaction check
+        run: python3 scripts/redact.py --self-check

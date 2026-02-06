@@ -1,0 +1,19 @@
+policy:
+  blocklist:
+    - "ignore previous"
+    - "system prompt"
+    - "developer message"
+    - "exfiltrate"
+    - "send to http"
+  allowlist:
+    - "refuse"
+    - "cannot comply"
+  severity_threshold: high
+  log_fields:
+    - prompt_id
+    - model
+    - policy_version
+    - tool_calls
+    - redaction_hits
+    - decision
+    - timestamp

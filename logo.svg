@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <g filter="url(#glow)" fill="none" stroke="#fb923c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Shield outline -->
+    <path d="M64 16 L96 32 L96 64 C96 88 64 112 64 112 C64 112 32 88 32 64 L32 32 Z" opacity="0.9"/>
+    <!-- Speech bubble / terminal prompt inside shield -->
+    <!-- Terminal window frame -->
+    <rect x="46" y="40" width="36" height="28" rx="3" ry="3" opacity="0.8"/>
+    <!-- Terminal top bar -->
+    <line x1="46" y1="47" x2="82" y2="47" stroke-width="1.5" opacity="0.5"/>
+    <!-- Prompt cursor lines -->
+    <line x1="51" y1="54" x2="56" y2="54" stroke-width="2" opacity="0.9"/>
+    <line x1="59" y1="54" x2="73" y2="54" stroke-width="2" opacity="0.6"/>
+    <line x1="51" y1="60" x2="56" y2="60" stroke-width="2" opacity="0.9"/>
+    <line x1="59" y1="60" x2="68" y2="60" stroke-width="2" opacity="0.6"/>
+    <!-- Shield accent dots (top bar) -->
+    <circle cx="50" cy="44" r="1.2" fill="#fb923c" stroke="none" opacity="0.7"/>
+    <circle cx="54" cy="44" r="1.2" fill="#fb923c" stroke="none" opacity="0.7"/>
+    <circle cx="58" cy="44" r="1.2" fill="#fb923c" stroke="none" opacity="0.7"/>
+  </g>
+</svg>

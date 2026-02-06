@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prompt Injection Report</title>
+  <style>
+    body { font-family: Inter, system-ui, sans-serif; background: #0d1117; color: #e6edf3; margin: 0; }
+    .container { max-width: 960px; margin: 0 auto; padding: 32px; }
+    .card { background: #161b22; border: 1px solid #30363d; border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+    .pill { display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 12px; background: #238636; color: #fff; }
+    .pill.fail { background: #f85149; }
+    .pill.warn { background: #d29922; }
+    code { background: #0b0f14; padding: 2px 6px; border-radius: 6px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    th, td { text-align: left; padding: 10px; border-bottom: 1px solid #30363d; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Prompt Injection Report</h1>
+    <div class="card">
+      <div>Suite: <strong>{{suite}}</strong></div>
+      <div>Generated: <strong>{{generated_at}}</strong></div>
+      <div>Total Cases: <strong>{{total}}</strong></div>
+      <div>Fails: <strong>{{fails}}</strong></div>
+    </div>
+    <div class="card">
+      <h2>Results</h2>
+      <table>
+        <thead>
+          <tr><th>Case</th><th>Status</th><th>Signals</th><th>Expected</th></tr>
+        </thead>
+        <tbody>
+          {{rows}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
