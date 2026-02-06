@@ -1,18 +1,19 @@
 # Contributing
 
-We welcome contributions from the community! Here's how to get started.
+Contributions are welcome. If you find a bug or have an idea, open an issue first so we can discuss.
 
-## Workflow
-- Fork the repo and create a branch per change
-- Update docs alongside code
-- Run the demo harness (if present)
-- Open a pull request with a clear description of the change
+## How to contribute
+
+1. Fork the repo
+2. Create a feature branch (`git checkout -b my-feature`)
+3. Make your changes
+4. Run tests (`make test`)
+5. Open a pull request
 
 ## Guidelines
-- Keep pull requests focused on a single change
-- Include tests or examples where applicable
-- Follow the existing code and documentation style
 
-## Pre-Submit Checklist
+- Keep changes focused -- one PR per feature or fix
+- Follow existing code style
+- Add tests for new functionality when possible
+- Keep test data synthetic -- no real credentials or sensitive content
 - Verify docs contain no internal domains or IPs
-- Ensure your changes work with a clean install
