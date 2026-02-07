@@ -167,6 +167,18 @@ $ make benchmark
 
 Subsequent runs compare against the previous benchmark and flag regressions.
 
+### HTML Report
+
+Generate a web report for sharing with your team:
+
+```bash
+make report    # → reports/latest.html
+```
+
+<p align="center">
+  <img src="docs/report.png" alt="HTML defense report" width="700" />
+</p>
+
 ## Project Structure
 
 ```
