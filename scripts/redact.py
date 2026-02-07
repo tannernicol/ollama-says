@@ -13,6 +13,8 @@ ALLOWLIST_DOMAINS = {
     "pytest.org",
     "json-schema.org",
     "docs.pytest.org",
+    "python.org",
+    "img.shields.io",
 }
 
 ALLOWLIST_IPS = {
