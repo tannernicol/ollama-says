@@ -1,6 +1,14 @@
 # Ollama Says -- Prompt Injection Defense Lab
 
+[![CI](https://github.com/tannernicol/ollama-says/actions/workflows/ci.yml/badge.svg)](https://github.com/tannernicol/ollama-says/actions/workflows/ci.yml)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
 Test your Ollama models against structured attack suites -- injection, exfiltration, tool abuse, jailbreaks -- with automated scoring, policy enforcement, and reporting.
+
+<p align="center">
+  <img src="docs/demo.png" alt="Benchmark scorecard" width="700" />
+</p>
 
 **Why another injection tool?** Most tools (garak, promptfoo) require API keys and cloud models. Ollama Says runs entirely offline against your local Ollama models. No API keys. No data leaves your machine. Reproducible YAML-based test suites with semantic signal detection, not just string matching.
 
