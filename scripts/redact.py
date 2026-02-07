@@ -9,6 +9,8 @@ ALLOWLIST_DOMAINS = {
     "example.com",
     "example.internal",
     "evil.test",
+    "tannner.com",
+    "linkedin.com",
     "contributor-covenant.org",
     "pytest.org",
     "json-schema.org",
