@@ -1,3 +1,11 @@
 .env
 reports/
 config/suite.generated.yaml
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+.venv/
+.env

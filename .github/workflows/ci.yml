@@ -2,29 +2,36 @@ name: CI
 
 on:
   push:
+    branches: [main]
   pull_request:
 
 jobs:
-  demo:
+  test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.11', '3.12']
     steps:
       - uses: actions/checkout@v4
-      - name: Set up Python
+      - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
-      - name: Install deps
-        run: pip install -r requirements.txt
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: pip install pyyaml pytest
+      - name: Run tests
+        run: python -m pytest tests/ -v
       - name: Run demo harness
-        run: python scripts/demo.py --config config/example.yaml
+        run: python scripts/demo.py --config config/suite.yaml
       - name: Run evaluation (simulate)
         run: python scripts/evaluate.py --config config/suite.yaml --simulate
-      - name: Generate suite (sanity check)
+      - name: Run benchmark (simulate)
+        run: cd $GITHUB_WORKSPACE && python scripts/benchmark.py --config config/suite.yaml --simulate
+      - name: Generate suite
         run: python scripts/generate_cases.py --out config/suite.generated.yaml
-      - name: Render report (sanity check)
+      - name: Render HTML report
         run: |
           python scripts/evaluate.py --config config/suite.yaml --simulate --out reports
-          cp reports/*.json reports/latest.json
           python scripts/render_report.py --input reports/latest.json --output reports/latest.html
       - name: Redaction check
-        run: python3 scripts/redact.py --self-check
+        run: python scripts/redact.py --self-check

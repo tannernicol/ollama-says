@@ -1,22 +1,41 @@
 # Setup Guide
 
+Everything runs locally. No API keys or cloud services needed.
+
 ## Prerequisites
-- Ollama installed and running locally
-- Python 3.11+
+- Python 3.10+
+- Ollama installed and running locally (optional -- simulate mode works without it)
 
 ## Step 1: Environment
-1. Create a virtual environment.
+1. Create a virtual environment:
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate
+   ```
 2. Install dependencies:
-   `pip install -r requirements.txt`
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-## Step 2: Configuration
-1. Copy `config/example.yaml` to `config/local.yaml`.
-2. Choose a local model in Ollama.
-
-## Step 3: Dry Run
-Run the demo harness to validate wiring:
+## Step 2: Quick Demo (no Ollama needed)
+Run the demo harness in simulate mode:
+```bash
+make demo
 ```
-python scripts/demo.py --config config/local.yaml
-```
+Expected output: a JSON report with 22 test cases and defense scoring.
 
-Expected output: a short report with test cases and pass/fail scoring.
+## Step 3: Run Against a Model
+1. Pull a model in Ollama:
+   ```bash
+   ollama pull qwen2.5:7b
+   ```
+2. Run the evaluation suite:
+   ```bash
+   python scripts/evaluate.py --config config/suite.yaml --policy config/policy.yaml
+   ```
+
+## Step 4: Benchmark
+Compare defense quality over time:
+```bash
+make benchmark
+```

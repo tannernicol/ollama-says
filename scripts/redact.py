@@ -8,10 +8,21 @@ ALLOWLIST_DOMAINS = {
     "shields.io",
     "example.com",
     "example.internal",
+    "evil.test",
+    "contributor-covenant.org",
+    "pytest.org",
+    "json-schema.org",
+    "docs.pytest.org",
 }
 
 ALLOWLIST_IPS = {
     "10.0.0.0",
+    "192.0.2.1",
+}
+
+# Well-known example/test credentials that are safe to include
+ALLOWLIST_SECRETS = {
+    "AKIAIOSFODNN7EXAMPLE",  # AWS documentation example key
 }
 
 PATTERNS = [
@@ -48,6 +59,10 @@ def scan_text(text):
                     continue
             if name == "ip" and value in ALLOWLIST_IPS:
                 continue
+            if name == "aws_access_key" and value in ALLOWLIST_SECRETS:
+                continue
+            if name == "github_token" and value in ALLOWLIST_SECRETS:
+                continue
             hits.append((name, value))
     return hits
 
@@ -63,6 +78,10 @@ def iter_files(root: Path):
         if path.is_dir():
             continue
         if ".git" in path.parts:
+            continue
+        if ".pytest_cache" in path.parts:
+            continue
+        if "__pycache__" in path.parts:
             continue
         if path.suffix.lower() in {".png", ".jpg", ".jpeg", ".gif", ".svg", ".pdf"}:
             continue

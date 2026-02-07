@@ -1,13 +1,16 @@
-# Public Scope
+# Scope
 
-This file defines what is safe to publish.
+This file defines the scope of this project.
 
-## Allowed
+## In Scope
 - High-level architecture and flow diagrams
 - Public tool names and generic config examples
 - Demo outputs with synthetic data
+- Prompt injection test cases (all synthetic)
+- Defense documentation and playbooks
 
-## Not Allowed
+## Out of Scope
 - Real domains, IPs, credentials, or customer data
-- Internal hostnames or personal identifiers
+- Personal identifiers
 - Unredacted logs or config files
+- Testing against systems you do not own

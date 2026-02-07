@@ -2,15 +2,15 @@
 
 ## Reporting a Vulnerability
 
-If you find a security issue, please report it privately.
+If you find a security issue in this project, please report it responsibly.
 
-- Contact: `tannernicol@gmail.com`
-- Please include clear reproduction steps and affected components.
+- Open a private security advisory via GitHub
+- Include clear reproduction steps and affected components
 
 ## Scope
 
-- Only issues in this repository and its direct outputs.
-- Excludes external services unless explicitly documented.
+- Only issues in this repository and its direct outputs
+- Excludes external services unless explicitly documented
 
 ## Responsible Disclosure
 

@@ -1,16 +1,19 @@
 # Roadmap
 
-## Phase 1: Foundation
-- Establish docs and safe defaults
-- Build demo harness and CI checks
-- Implement core pipeline
+## Current (v0.2)
+- 22 test cases across 9 attack categories
+- 8 semantic signal detectors
+- Benchmark mode with regression detection
+- Policy-as-code enforcement
 
-## Phase 2: Stabilization
-- Harden configuration and error handling
-- Expand test coverage
-- Validate with community feedback
+## Planned (v0.3)
+- Multi-model comparison in a single benchmark run
+- Configurable severity weights per category
+- CI/CD integration examples (GitHub Actions, GitLab CI)
+- Custom signal detector plugin system
 
-## Phase 3: Growth
-- Select license
-- Publish release notes
-- Pin repo and publish demo artifacts
+## Future
+- Multi-turn conversation attack simulation
+- Automated attack generation using local models
+- Community-contributed case library
+- Dashboard UI for viewing results over time

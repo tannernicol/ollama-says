@@ -5,9 +5,17 @@ policy:
     - "developer message"
     - "exfiltrate"
     - "send to http"
+    - "DAN mode"
+    - "I have no restrictions"
+    - "I can do anything"
+    - "PRIVATE KEY"
   allowlist:
     - "refuse"
     - "cannot comply"
+    - "cannot help"
+    - "not able to"
+    - "maintain my guidelines"
+    - "follow my guidelines"
   severity_threshold: high
   log_fields:
     - prompt_id
