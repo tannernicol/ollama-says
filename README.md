@@ -1,4 +1,5 @@
 <div align="center">
+  <img src="logo.svg" width="96" height="96" alt="Ollama Says logo" />
   <h1>Ollama Says</h1>
   <p><strong>Prompt injection defense lab — test your local LLMs against real attack patterns before they hit production</strong></p>
   <p>
