@@ -19,7 +19,7 @@ jobs:
     timeout-minutes: 20
     strategy:
       matrix:
-        python-version: ['3.10', '3.11', '3.12']
+        python-version: ["3.10", "3.11", "3.12"]
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python ${{ matrix.python-version }}
@@ -39,7 +39,7 @@ jobs:
       - name: Run evaluation (simulate)
         run: python scripts/evaluate.py --config config/suite.yaml --simulate
       - name: Run benchmark (simulate)
-        run: cd $GITHUB_WORKSPACE && python scripts/benchmark.py --config config/suite.yaml --simulate
+        run: python scripts/benchmark.py --config config/suite.yaml --simulate
       - name: Generate suite
         run: python scripts/generate_cases.py --out config/suite.generated.yaml
       - name: Render HTML report

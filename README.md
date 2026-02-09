@@ -8,6 +8,9 @@
   </p>
 
 [![CI](https://github.com/tannernicol/ollama-says/actions/workflows/ci.yml/badge.svg)](https://github.com/tannernicol/ollama-says/actions/workflows/ci.yml)
+[![Hygiene](https://github.com/tannernicol/ollama-says/actions/workflows/hygiene.yml/badge.svg)](https://github.com/tannernicol/ollama-says/actions/workflows/hygiene.yml)
+[![Security](https://github.com/tannernicol/ollama-says/actions/workflows/security.yml/badge.svg)](https://github.com/tannernicol/ollama-says/actions/workflows/security.yml)
+[![SBOM](https://github.com/tannernicol/ollama-says/actions/workflows/sbom.yml/badge.svg)](https://github.com/tannernicol/ollama-says/actions/workflows/sbom.yml)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 </div>
@@ -236,6 +239,28 @@ pip install pytest pyyaml
 make test
 ```
 
+## Engineering Quality
+
+- CI matrix on Python 3.10/3.11/3.12 with simulate-mode smoke runs
+- Pre-commit + redaction checks in dedicated hygiene workflow
+- CodeQL and weekly dependency audit automation
+- SBOM artifacts generated on PRs and release tags
+- Dependabot updates for Python and GitHub Actions dependencies
+
+## Public Hygiene
+
+Before sharing logs, reports, or screenshots:
+
+```bash
+python scripts/redact.py --self-check
+```
+
+Reference:
+
+- [Security Policy](SECURITY.md)
+- [Public Scope](docs/public-scope.md)
+- [Redaction Policy](docs/redaction-policy.md)
+- `scripts/configure_branch_protection.sh tannernicol/ollama-says main`
 ## Defense Playbook
 
 See [docs/defense-playbook.md](docs/defense-playbook.md) for a comprehensive guide to:

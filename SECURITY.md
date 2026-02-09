@@ -2,16 +2,37 @@
 
 ## Reporting a Vulnerability
 
-If you find a security issue in this project, please report it responsibly.
+Please report vulnerabilities privately via GitHub Security Advisories:
 
-- Open a private security advisory via GitHub
-- Include clear reproduction steps and affected components
+- https://github.com/tannernicol/ollama-says/security/advisories/new
+
+Please include:
+
+- Affected version or commit
+- Reproduction steps
+- Impact assessment
+- Suggested remediation (if known)
 
 ## Scope
 
-- Only issues in this repository and its direct outputs
-- Excludes external services unless explicitly documented
+In scope:
 
-## Responsible Disclosure
+- Core evaluation engine and detection scripts
+- Default policy/suite configuration templates
+- Report generation and benchmark logic
 
-We will acknowledge receipt within 7 days and provide a remediation timeline after triage.
+Out of scope:
+
+- Misconfigurations in downstream/private deployments
+- Vulnerabilities in external dependencies unless exploitable through this codebase
+- Unauthorized offensive testing beyond defensive research scope
+
+## Disclosure Timeline
+
+- Acknowledgement target: within 7 days
+- Triage target: within 14 days
+- Remediation timeline: shared after triage based on severity
+
+## Public Hygiene
+
+Do not post real credentials, private hostnames, private IPs, proprietary prompts, or personal data in issues, PRs, logs, screenshots, or reports.

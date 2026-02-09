@@ -1,19 +1,26 @@
 # Contributing
 
-Contributions are welcome. If you find a bug or have an idea, open an issue first so we can discuss.
+Thanks for contributing to Ollama Says.
 
-## How to contribute
+## Workflow
 
-1. Fork the repo
-2. Create a feature branch (`git checkout -b my-feature`)
-3. Make your changes
-4. Run tests (`make test`)
-5. Open a pull request
+1. Fork the repository and create a focused branch.
+2. Add/update tests and docs with the code change.
+3. Run local validation before opening a PR.
+4. Open a PR with clear security impact notes.
 
-## Guidelines
+## Local Validation
 
-- Keep changes focused -- one PR per feature or fix
-- Follow existing code style
-- Add tests for new functionality when possible
-- Keep test data synthetic -- no real credentials or sensitive content
-- Verify docs contain no internal domains or IPs
+```bash
+make test
+pre-commit run --all-files
+python scripts/redact.py --self-check
+python scripts/evaluate.py --config config/suite.yaml --simulate
+```
+
+## Pull Request Expectations
+
+- Keep PRs focused and reproducible.
+- Include test cases for new detectors, policies, or suite logic.
+- Keep examples synthetic and non-sensitive.
+- Do not include real credentials, private hosts, or proprietary prompts.
