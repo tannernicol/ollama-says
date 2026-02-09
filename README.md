@@ -43,6 +43,13 @@ Ollama Says runs 22 structured attack cases against your local Ollama models —
 - HTML reporting for sharing defense posture with teams
 - Redaction guardrails for safe public artifacts
 
+## Engineering Signal (Employer Skim)
+
+- Builds offensive-defense style evaluation harness for local LLMs
+- Implements policy-as-code and measurable security scoring
+- Ships reproducible CI/security/SBOM/redaction automation
+- Documents threat model and operational hardening for production use
+
 ## When to Use
 
 - Teams validating local LLM deployments before release
