@@ -1,0 +1,27 @@
+{
+  "project": "Ollama Says",
+  "synthetic": true,
+  "metrics": [
+    {
+      "scenario": "simulate suite run",
+      "p50_ms": 260,
+      "p95_ms": 480,
+      "cpu_pct": 22,
+      "mem_mb": 210
+    },
+    {
+      "scenario": "live-model eval pass",
+      "p50_ms": 840,
+      "p95_ms": 1540,
+      "cpu_pct": 47,
+      "mem_mb": 510
+    },
+    {
+      "scenario": "benchmark diff report",
+      "p50_ms": 310,
+      "p95_ms": 590,
+      "cpu_pct": 26,
+      "mem_mb": 250
+    }
+  ]
+}

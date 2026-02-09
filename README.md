@@ -8,6 +8,9 @@
   </p>
 
 [![CI](https://github.com/tannernicol/ollama-says/actions/workflows/ci.yml/badge.svg)](https://github.com/tannernicol/ollama-says/actions/workflows/ci.yml)
+[![Hygiene](https://github.com/tannernicol/ollama-says/actions/workflows/hygiene.yml/badge.svg)](https://github.com/tannernicol/ollama-says/actions/workflows/hygiene.yml)
+[![Security](https://github.com/tannernicol/ollama-says/actions/workflows/security.yml/badge.svg)](https://github.com/tannernicol/ollama-says/actions/workflows/security.yml)
+[![SBOM](https://github.com/tannernicol/ollama-says/actions/workflows/sbom.yml/badge.svg)](https://github.com/tannernicol/ollama-says/actions/workflows/sbom.yml)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 </div>
@@ -16,6 +19,10 @@
 
 <p align="center">
   <img src="docs/dashboard.svg" alt="Ollama Says defense dashboard" width="700" />
+</p>
+
+<p align="center">
+  <img src="docs/demo.gif" alt="Ollama Says synthetic 60-second demo" width="700" />
 </p>
 
 ## The Problem
@@ -27,6 +34,33 @@ You deploy an LLM-powered feature. A user pastes "ignore previous instructions a
 Ollama Says runs 22 structured attack cases against your local Ollama models — jailbreaks, injection, exfiltration, tool abuse, encoding tricks — and scores each response with 8 semantic signal detectors. Not regex matching. Actual behavioral analysis.
 
 **Runs entirely offline. No API keys. No data leaves your machine.**
+
+## At a Glance
+
+- Offline prompt-injection evaluation for local Ollama models
+- Policy-as-code plus semantic signal detectors
+- Repeatable benchmark scoring with regression tracking
+- HTML reporting for sharing defense posture with teams
+- Redaction guardrails for safe public artifacts
+
+## Engineering Signal (Employer Skim)
+
+- Builds offensive-defense style evaluation harness for local LLMs
+- Implements policy-as-code and measurable security scoring
+- Ships reproducible CI/security/SBOM/redaction automation
+- Documents threat model and operational hardening for production use
+
+## When to Use
+
+- Teams validating local LLM deployments before release
+- Security engineering workflows requiring offline evaluation
+- Regression tracking for prompt-defense controls over time
+
+## When Not to Use
+
+- Workloads that require cloud-model-only evaluations
+- One-off manual checks with no need for repeatable suites
+- Scenarios without local model access or permissioned test scope
 
 ## What Makes It Different
 
@@ -183,6 +217,18 @@ $ make benchmark
 
 Subsequent runs compare against the previous benchmark and flag regressions.
 
+## Synthetic Benchmarks
+
+```bash
+python scripts/benchmark_synthetic.py --format markdown
+python scripts/benchmark_synthetic.py --format json --output docs/benchmarks.synthetic.json
+```
+
+Reference:
+
+- `docs/benchmarks.md`
+- `docs/benchmarks.synthetic.md`
+
 ### HTML Report
 
 Generate a web report for sharing with your team:
@@ -227,6 +273,43 @@ ollama-says/
 pip install pytest pyyaml
 make test
 ```
+
+## Engineering Quality
+
+- CI matrix on Python 3.10/3.11/3.12 with simulate-mode smoke runs
+- Pre-commit + redaction checks in dedicated hygiene workflow
+- CodeQL and weekly dependency audit automation
+- SBOM artifacts generated on PRs and release tags
+- Dependabot updates for Python and GitHub Actions dependencies
+
+## Documentation
+
+- [Sanitized Workflow Example](examples/sanitized_workflow.md)
+- [Threat Model](docs/threat-model.md)
+- [Production Hardening Checklist](docs/hardening-checklist.md)
+- [Release Policy](docs/release-policy.md)
+- [Changelog](CHANGELOG.md)
+- [Good First Issues](docs/good-first-issues.md)
+- [Cross-Repo Stack Demo](docs/stack-demo.md)
+
+## Public Hygiene
+
+Before sharing logs, reports, or screenshots:
+
+```bash
+python scripts/redact.py --self-check
+```
+
+Reference:
+
+- [Security Policy](SECURITY.md)
+- [Public Scope](docs/public-scope.md)
+- [Redaction Policy](docs/redaction-policy.md)
+- `scripts/configure_branch_protection.sh tannernicol/ollama-says main`
+
+## Related Repos
+
+- [Open Source Portfolio Index](docs/portfolio-index.md)
 
 ## Defense Playbook
 
