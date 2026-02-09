@@ -28,6 +28,14 @@ Ollama Says runs 22 structured attack cases against your local Ollama models —
 
 **Runs entirely offline. No API keys. No data leaves your machine.**
 
+## At a Glance
+
+- Offline prompt-injection evaluation for local Ollama models
+- Policy-as-code plus semantic signal detectors
+- Repeatable benchmark scoring with regression tracking
+- HTML reporting for sharing defense posture with teams
+- Redaction guardrails for safe public artifacts
+
 ## What Makes It Different
 
 - **Offline-first** -- No API keys, no cloud. Tests run against local Ollama models only.
