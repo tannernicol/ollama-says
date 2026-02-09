@@ -24,3 +24,8 @@ python scripts/evaluate.py --config config/suite.yaml --simulate
 - Include test cases for new detectors, policies, or suite logic.
 - Keep examples synthetic and non-sensitive.
 - Do not include real credentials, private hosts, or proprietary prompts.
+
+## Starter Tasks
+
+- See docs/good-first-issues.md for contributor-friendly tasks with acceptance criteria.
+- Follow docs/release-policy.md when preparing release-impacting changes.

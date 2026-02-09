@@ -46,5 +46,9 @@ jobs:
         run: |
           python scripts/evaluate.py --config config/suite.yaml --simulate --out reports
           python scripts/render_report.py --input reports/latest.json --output reports/latest.html
+      - name: Generate synthetic benchmarks
+        run: |
+          python scripts/benchmark_synthetic.py --format markdown --output /tmp/bench.md
+          python scripts/benchmark_synthetic.py --format json --output /tmp/bench.json
       - name: Redaction check
         run: python scripts/redact.py --self-check
