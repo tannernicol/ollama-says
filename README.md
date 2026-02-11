@@ -6,12 +6,14 @@
     <a href="https://tannner.com">tannner.com</a> ·
     <a href="https://github.com/tannernicol/ollama-says">GitHub</a>
   </p>
+
+[![CI](https://github.com/tannernicol/ollama-says/actions/workflows/ci.yml/badge.svg)](https://github.com/tannernicol/ollama-says/actions/workflows/ci.yml)
 </div>
 
 ---
 
 <p align="center">
-  <img src="docs/demo.png" alt="Ollama Says demo" width="700" />
+  <img src="docs/demo.gif" alt="Ollama Says demo" width="700" />
 </p>
 
 ## The Problem

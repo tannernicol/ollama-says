@@ -1,31 +1,22 @@
 # Contributing
 
-Thanks for contributing to Ollama Says.
+Thanks for your interest in Ollama Says.
 
-## Workflow
-
-1. Fork the repository and create a focused branch.
-2. Add/update tests and docs with the code change.
-3. Run local validation before opening a PR.
-4. Open a PR with clear security impact notes.
-
-## Local Validation
+## Getting Started
 
 ```bash
+pip install -r requirements.txt pytest
 make test
-pre-commit run --all-files
-python scripts/redact.py --self-check
 python scripts/evaluate.py --config config/suite.yaml --simulate
 ```
 
-## Pull Request Expectations
+## Pull Requests
 
-- Keep PRs focused and reproducible.
-- Include test cases for new detectors, policies, or suite logic.
-- Keep examples synthetic and non-sensitive.
-- Do not include real credentials, private hosts, or proprietary prompts.
+1. Fork the repo and create a focused branch.
+2. Include test cases for new detectors or attack vectors.
+3. Run `make test` before opening a PR.
+4. Keep examples synthetic — no real credentials or proprietary prompts.
 
-## Starter Tasks
+## Security
 
-- See docs/good-first-issues.md for contributor-friendly tasks with acceptance criteria.
-- Follow docs/release-policy.md when preparing release-impacting changes.
+See [SECURITY.md](SECURITY.md) for reporting vulnerabilities.
