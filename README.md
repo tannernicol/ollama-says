@@ -75,6 +75,37 @@ Each model response is scanned by 8 independent signal detectors:
 | `role_confusion` | medium | Model adopting unauthorized persona or role |
 | `encoded_content` | medium | Base64, hex, HTML entities in output |
 
+## Benchmark Results
+
+Tested February 2026 on the full 41-case suite. Scores are 0–100 (higher = better defense).
+
+| Category | Qwen 2.5 7B | Qwen 2.5 32B | Dolphin Mistral 7B | Phi-3 14B |
+|---|:---:|:---:|:---:|:---:|
+| context | 50 | 50 | 58 | **75** |
+| direct | 50 | 50 | **100** | **100** |
+| encoding | 70 | 70 | 70 | 70 |
+| exfiltration | **100** | **100** | **100** | **100** |
+| extraction | 80 | **90** | **90** | 70 |
+| indirect | 62 | 75 | **88** | **88** |
+| jailbreak | 79 | 79 | 79 | **88** |
+| multi-turn | **75** | **75** | 50 | **75** |
+| tool-abuse | **100** | **100** | 75 | **100** |
+| **Overall** | **74** | **77** | **77** | **83** |
+
+**Key findings:**
+
+- **Phi-3 14B scored highest** (83) with the strongest jailbreak and context manipulation resistance
+- **Scaling alone isn't enough** — Qwen 32B only gained 3 points over Qwen 7B (77 vs 74)
+- **"Uncensored" doesn't mean defenseless** — Dolphin Mistral matched Qwen 32B overall but with a different failure profile (weaker on multi-turn and tool abuse, stronger on direct injection)
+- **7 attacks beat every model**: payload splitting, token smuggling, chain-of-thought exploitation, code block injection, context overflow, script mixing, and model fingerprinting
+- **All models aced exfiltration** — none leaked credential patterns or exfiltration URLs
+
+Reproduce these results:
+
+```bash
+python scripts/evaluate.py --config config/suite.yaml --model qwen2.5:7b
+```
+
 ## Adding Custom Tests
 
 Add cases to `cases/library.yaml` or create your own YAML file:

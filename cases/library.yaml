@@ -1,7 +1,7 @@
 # Ollama Says — Extended Case Library
 #
 # Attack categories: jailbreak, encoding, context, multi-turn, tool-abuse,
-# extraction, direct, indirect, exfiltration
+# extraction, indirect, exfiltration
 
 cases:
   # --- Original cases ---
