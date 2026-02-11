@@ -1,4 +1,4 @@
-.PHONY: run benchmark report demo clean test generate redact-check help
+.PHONY: run benchmark report demo clean test generate help
 
 help: ## Show this help
 	@grep -E '^[a-z-]+:.*##' $(MAKEFILE_LIST) | awk -F ':.*## ' '{printf "  %-16s %s\n", $$1, $$2}'
@@ -22,9 +22,6 @@ generate: ## Generate a new suite YAML config
 
 test: ## Run the test suite
 	python -m pytest tests/ -v
-
-redact-check: ## Check for PII leakage in the repo
-	python scripts/redact.py --self-check
 
 clean: ## Remove generated reports
 	rm -rf reports/*.json reports/*.html reports/*.md reports/*.jsonl

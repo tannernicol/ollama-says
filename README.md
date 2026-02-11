@@ -28,7 +28,7 @@ Ollama Says runs structured attack cases against your local Ollama models — ja
 
 ## Key Features
 
-- **47+ attack vectors** — direct and indirect injection with structured taxonomy
+- **22 attack vectors** — direct and indirect injection with structured taxonomy
 - **8 pattern-based signal detectors** — regex-driven detection across critical, high, and medium severity tiers
 - **Policy-as-code** — blocklist/allowlist enforcement in YAML
 - **Scored results** — 0-100 defense score with pass/fail per vector
@@ -50,14 +50,14 @@ make demo
 python scripts/evaluate.py --config config/suite.yaml --model llama3.2
 
 # Generate an HTML report
-python scripts/evaluate.py --config config/suite.yaml --report html
+python scripts/evaluate.py --config config/suite.yaml --simulate --out reports
+python scripts/render_report.py --input reports/latest.json --output reports/latest.html
 ```
 
 ```
-$ ollama-says run attacks/injection.yaml \
-    --model llama3.2
-→ 47 attack vectors...
-→ 38/47 blocked (80.8%) — 9 bypasses logged
+$ python scripts/evaluate.py --config config/suite.yaml --model llama3.2
+→ 22 attack vectors...
+→ 18/22 blocked (81.8%) — 4 bypasses logged
 ```
 
 ## Signal Detectors
