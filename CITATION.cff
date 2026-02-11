@@ -1,9 +1,0 @@
-cff-version: 1.2.0
-title: Ollama Says
-message: If you use this work, please cite it.
-authors:
-  - name: Ollama Says Contributors
-version: 0.2.0
-date-released: 2025-02-05
-license: MIT
-repository-code: https://github.com/tannernicol/ollama-says
