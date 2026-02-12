@@ -28,7 +28,7 @@ Ollama Says runs structured attack cases against your local Ollama models — ja
 
 ## Key Features
 
-- **41 attack vectors** — direct and indirect injection with structured taxonomy
+- **37 attack vectors** — direct and indirect injection with structured taxonomy
 - **8 pattern-based signal detectors** — regex-driven detection across critical, high, and medium severity tiers
 - **Policy-as-code** — blocklist/allowlist enforcement in YAML
 - **Scored results** — 0-100 defense score with pass/fail per vector
@@ -56,8 +56,8 @@ python scripts/render_report.py --input reports/latest.json --output reports/lat
 
 ```
 $ python scripts/evaluate.py --config config/suite.yaml --model llama3.2
-→ 41 attack vectors...
-→ 18/22 blocked (81.8%) — 4 bypasses logged
+→ 37 attack vectors...
+→ 30/37 blocked (81.1%) — 7 bypasses logged
 ```
 
 ## Signal Detectors
@@ -77,7 +77,7 @@ Each model response is scanned by 8 independent signal detectors:
 
 ## Benchmark Results
 
-Tested February 2026 on the full 41-case suite. Scores are 0–100 (higher = better defense).
+Tested February 2026 on the full 37-case suite. Scores are 0–100 (higher = better defense).
 
 | Category | Qwen 2.5 7B | Qwen 2.5 32B | Dolphin Mistral 7B | Phi-3 14B |
 |---|:---:|:---:|:---:|:---:|
@@ -172,10 +172,10 @@ $ make benchmark
 ============================================================
   Suite:   core-prompt-injection
   Model:   qwen2.5:7b
-  Cases:   22
+  Cases:   37
 ------------------------------------------------------------
   OVERALL DEFENSE SCORE: 100/100  (new)
-  Pass: 22  Warn: 0  Fail: 0
+  Pass: 37  Warn: 0  Fail: 0
 ------------------------------------------------------------
   CATEGORY SCORES:
     context              [####################] 100/100  (new)
@@ -227,7 +227,7 @@ ollama-says/
     suite.yaml          # Main suite configuration
     policy.yaml         # Blocklist/allowlist policy rules
   cases/
-    library.yaml        # Extended case library (22 attack cases)
+    library.yaml        # Extended case library (37 attack cases)
   scripts/
     evaluate.py         # Core evaluation engine + signal detectors
     benchmark.py        # Benchmark mode with regression detection
@@ -272,7 +272,7 @@ This tool is for **defensive research only**. It helps security teams evaluate a
 
 **In scope — what Ollama Says defends against:**
 
-- **Prompt injection blindspots** — 22 structured attack cases across 9 categories ensure your model is tested against known injection techniques before deployment, not after a user discovers one in production
+- **Prompt injection blindspots** — 37 structured attack cases across 9 categories ensure your model is tested against known injection techniques before deployment, not after a user discovers one in production
 - **Defense regression** — benchmark mode detects when a model update or config change weakens defenses that previously held, with per-category scoring and diff against prior runs
 - **Detection overfit to regex** — 8 semantic signal detectors analyze behavioral compliance (role confusion, jailbreak acceptance, exfiltration attempts), not just string matching
 - **Policy enforcement drift** — blocklist/allowlist rules are defined as code in YAML, version-controlled alongside your model config, not manually checked
@@ -291,7 +291,7 @@ flowchart TB
     subgraph Inputs
         Suite[suite.yaml\nAttack Cases]
         Policy[policy.yaml\nBlocklist / Allowlist]
-        Cases[cases/library.yaml\n22 Attack Patterns]
+        Cases[cases/library.yaml\n37 Attack Patterns]
     end
 
     Suite --> Engine
