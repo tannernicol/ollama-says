@@ -22,7 +22,7 @@ Run the demo harness in simulate mode:
 ```bash
 make demo
 ```
-Expected output: a JSON report with 22 test cases and defense scoring.
+Expected output: a JSON report with 37 test cases and defense scoring.
 
 ## Step 3: Run Against a Model
 1. Pull a model in Ollama:

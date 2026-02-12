@@ -28,7 +28,7 @@
   <!-- Top row: Stats cards -->
   <rect x="40" y="116" width="140" height="70" rx="10" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
   <text x="60" y="140" font-family="system-ui, sans-serif" font-size="10" fill="#8b949e">TOTAL CASES</text>
-  <text x="60" y="168" font-family="system-ui, sans-serif" font-size="24" font-weight="700" fill="#e6edf3">22</text>
+  <text x="60" y="168" font-family="system-ui, sans-serif" font-size="24" font-weight="700" fill="#e6edf3">37</text>
 
   <rect x="196" y="116" width="140" height="70" rx="10" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
   <text x="216" y="140" font-family="system-ui, sans-serif" font-size="10" fill="#8b949e">PASSED</text>
@@ -134,7 +134,7 @@
 
   <!-- Bottom status bar -->
   <rect x="40" y="484" width="896" height="40" rx="10" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
-  <text x="60" y="508" font-family="JetBrains Mono, monospace" font-size="10" fill="#8b949e">22 cases  |  8 detectors  |  2 signals triggered  |  Regression: none  |  Generated: 2026-02-07</text>
+  <text x="60" y="508" font-family="JetBrains Mono, monospace" font-size="10" fill="#8b949e">37 cases  |  8 detectors  |  2 signals triggered  |  Regression: none  |  Generated: 2026-02-07</text>
 
   <!-- Bottom section: recommendation -->
   <rect x="40" y="536" width="896" height="56" rx="10" fill="#0d1117" stroke="#d29922" stroke-width="1" opacity="0.8"/>
