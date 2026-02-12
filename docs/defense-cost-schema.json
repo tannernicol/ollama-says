@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Defense Cost Matrix",
+  "type": "object",
+  "required": ["lab_id", "defenses"],
+  "properties": {
+    "lab_id": {"type": "string"},
+    "defenses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "ux_friction", "performance_impact", "operational_complexity"],
+        "properties": {
+          "name": {"type": "string"},
+          "ux_friction": {"type": "string", "enum": ["none", "low", "medium", "high"]},
+          "performance_impact": {"type": "string", "enum": ["none", "low", "medium", "high"]},
+          "operational_complexity": {"type": "string", "enum": ["none", "low", "medium", "high"]},
+          "notes": {"type": "string"}
+        }
+      }
+    }
+  }
+}

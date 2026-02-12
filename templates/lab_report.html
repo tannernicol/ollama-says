@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ollama Says — Lab Report</title>
+  <style>
+    :root { font-family: "IBM Plex Mono", Menlo, monospace; color: #111; background: #f6f4ef; }
+    body { margin: 0; padding: 32px; }
+    h1 { margin-top: 0; }
+    .card { background: #fff; border: 1px solid #ddd; border-radius: 10px; padding: 20px; max-width: 900px; }
+    .pill { padding: 2px 10px; border-radius: 999px; font-size: 12px; background: #f1f1f1; }
+    table { border-collapse: collapse; width: 100%; margin-top: 12px; }
+    th, td { text-align: left; padding: 8px; border-bottom: 1px solid #eee; }
+    code { background: #f3f3f3; padding: 2px 6px; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Ollama Says — Lab Report</h1>
+    <p>Lab: <code>{{lab_id}}</code></p>
+    <p>Timestamp: <code>{{timestamp}}</code></p>
+    <p>Action: <span class="pill">{{action}}</span></p>
+
+    <h3>Request</h3>
+    <p>URL: <code>{{requested_url}}</code></p>
+    <p>Status: <code>{{status}}</code></p>
+    <p>Blocked reason: <code>{{blocked_reason}}</code></p>
+
+    <h3>Ports</h3>
+    <p>Control: <code>{{control_port}}</code></p>
+    <p>Internal: <code>{{internal_port}}</code></p>
+    <p>Public: <code>{{public_port}}</code></p>
+
+    <h3>State</h3>
+    <p>Internal hits: <code>{{internal_hits}}</code></p>
+    <p>Last request: <code>{{last_request}}</code></p>
+    <p>Last blocked: <code>{{last_blocked}}</code></p>
+  </div>
+</body>
+</html>

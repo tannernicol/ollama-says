@@ -1,0 +1,27 @@
+{
+  "$schema": "../../docs/defense-cost-schema.json",
+  "lab_id": "openclaw-invite",
+  "defenses": [
+    {
+      "name": "Disable auto-connect",
+      "ux_friction": "low",
+      "performance_impact": "none",
+      "operational_complexity": "low",
+      "notes": "Stops token exfiltration by requiring explicit user intent."
+    },
+    {
+      "name": "Confirm gateway URL",
+      "ux_friction": "medium",
+      "performance_impact": "none",
+      "operational_complexity": "low",
+      "notes": "User confirmation breaks the 1-click flow."
+    },
+    {
+      "name": "Bind token to origin",
+      "ux_friction": "low",
+      "performance_impact": "low",
+      "operational_complexity": "medium",
+      "notes": "Rejects replayed tokens from other origins."
+    }
+  ]
+}

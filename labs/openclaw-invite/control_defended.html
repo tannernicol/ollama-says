@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OpenClaw Invite Lab (Defended)</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+      background: #f0f4f8;
+      color: #1a1a1a;
+    }
+    body { margin: 0; padding: 32px; }
+    .card { background: #fff; border: 1px solid #d3d7dd; border-radius: 10px; padding: 20px; max-width: 760px; }
+    .row { display: flex; gap: 16px; flex-wrap: wrap; }
+    .pill { padding: 2px 10px; border-radius: 999px; font-size: 12px; background: #f1f1f1; }
+    .warn { background: #ffe7b3; color: #6a4b00; }
+    .ok { background: #d9f7d9; color: #1d6b1d; }
+    button { padding: 8px 14px; border-radius: 8px; border: 1px solid #777; background: #fff; cursor: pointer; }
+    button:disabled { opacity: 0.6; cursor: not-allowed; }
+    code { background: #f3f3f3; padding: 2px 6px; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>OpenClaw Invite Lab (Defended)</h1>
+    <p>
+      This page simulates a safer control UI. It will <strong>not</strong>
+      auto-connect to a <code>gatewayUrl</code> from the query string.
+      The user must explicitly confirm the URL before connecting.
+    </p>
+
+    <div class="row">
+      <div class="pill ok">Auto-connect disabled</div>
+      <div class="pill">Confirm gateway URL</div>
+      <div class="pill">Local-only lab</div>
+    </div>
+
+    <h3>Session</h3>
+    <p>Stored gateway token: <code id="token">-</code></p>
+    <p>Invite gateway URL: <code id="gateway">(none)</code></p>
+
+    <h3>Actions</h3>
+    <button id="connect">Connect to gateway</button>
+    <span id="connect-status" class="pill warn">not connected</span>
+
+    <h3>Status</h3>
+    <p>Gateway payload: <span id="payload" class="pill">unknown</span></p>
+    <p>Attacker last result: <code id="attacker">(waiting)</code></p>
+
+    <p>
+      Compare with the
+      <a href="/control.html">vulnerable control UI</a>.
+    </p>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const gatewayUrl = params.get("gatewayUrl") || "";
+    const gatewayToken = window.localStorage.getItem("gatewayToken") || "gateway-token-123";
+    window.localStorage.setItem("gatewayToken", gatewayToken);
+
+    const connectButton = document.getElementById("connect");
+    const connectStatus = document.getElementById("connect-status");
+
+    document.getElementById("token").textContent = gatewayToken;
+    document.getElementById("gateway").textContent = gatewayUrl || "(none)";
+
+    function isLocalhost(urlString) {
+      try {
+        const url = new URL(urlString);
+        return url.hostname === "localhost" || url.hostname === "127.0.0.1";
+      } catch (err) {
+        return false;
+      }
+    }
+
+    connectButton.addEventListener("click", async () => {
+      if (!gatewayUrl) {
+        alert("No gateway URL provided.");
+        return;
+      }
+      if (!isLocalhost(gatewayUrl)) {
+        alert("Blocked: gateway URL is not localhost.");
+        connectStatus.textContent = "blocked";
+        connectStatus.className = "pill warn";
+        return;
+      }
+      const ok = confirm(`Connect to gateway URL?\n${gatewayUrl}`);
+      if (!ok) {
+        connectStatus.textContent = "cancelled";
+        connectStatus.className = "pill warn";
+        return;
+      }
+      try {
+        const response = await fetch(`${gatewayUrl}/connect`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            token: gatewayToken,
+            gateway: "http://localhost:__GATEWAY_PORT__"
+          })
+        });
+        const data = await response.json();
+        document.getElementById("attacker").textContent = data.result || "connected";
+        connectStatus.textContent = "connected";
+        connectStatus.className = "pill ok";
+      } catch (err) {
+        document.getElementById("attacker").textContent = `error: ${err}`;
+        connectStatus.textContent = "error";
+        connectStatus.className = "pill warn";
+      }
+    });
+
+    async function pollStatus() {
+      try {
+        const response = await fetch("http://localhost:__GATEWAY_PORT__/status");
+        const data = await response.json();
+        const pill = document.getElementById("payload");
+        if (data.payload_executed) {
+          pill.textContent = "payload executed";
+          pill.className = "pill ok";
+        } else {
+          pill.textContent = "no payload";
+          pill.className = "pill";
+        }
+      } catch (err) {
+        const pill = document.getElementById("payload");
+        pill.textContent = "gateway offline";
+        pill.className = "pill warn";
+      }
+    }
+
+    pollStatus();
+    setInterval(pollStatus, 1500);
+  </script>
+</body>
+</html>

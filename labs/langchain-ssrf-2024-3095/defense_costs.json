@@ -1,0 +1,27 @@
+{
+  "$schema": "../../docs/defense-cost-schema.json",
+  "lab_id": "langchain-ssrf-2024-3095",
+  "defenses": [
+    {
+      "name": "Block localhost/private IPs",
+      "ux_friction": "low",
+      "performance_impact": "none",
+      "operational_complexity": "low",
+      "notes": "Prevents direct access to local metadata and internal services."
+    },
+    {
+      "name": "Allowlist destinations",
+      "ux_friction": "medium",
+      "performance_impact": "none",
+      "operational_complexity": "medium",
+      "notes": "Requires curated allowlist per environment."
+    },
+    {
+      "name": "DNS re-resolution on fetch",
+      "ux_friction": "low",
+      "performance_impact": "low",
+      "operational_complexity": "medium",
+      "notes": "Reduces DNS rebinding risk."
+    }
+  ]
+}

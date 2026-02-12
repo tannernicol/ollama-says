@@ -47,3 +47,20 @@ Outputs:
 
 Notes:
 - Keep all cases synthetic and local-only.
+
+## Exploit Reproduction Lab
+Use to validate a real-world CVE in a safe local harness and document defenses.
+
+Inputs:
+- Local lab script
+- Vulnerable and defended flows
+- Cost matrix notes
+
+Outputs:
+- JSON report
+- Defense tradeoff summary
+- Repro steps for teammates
+
+Notes:
+- Keep payloads benign.
+- Keep all endpoints on localhost.
